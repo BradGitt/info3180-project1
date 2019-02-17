@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+<!--{% block title %} Profile {% endblock %}-->
+
+{% block main %}
+<h1>Contact Form</h1>
+<hr class="cformhr">
+<p class="info">Fill in this form to contact the site owners</p>
+<form class="emailform" method="POST" action="/process">
+ {{ form.csrf_token }}
+ 
+ {{ form.name.label }}<span class="req"> (Required)</span>
+ <p>Please enter your full name</p>
+ {{ form.name(size=40) }}
+ <br>
+ {{ form.email.label }}<span class="req"> (Required)</span>
+ <p>Please enter your email address</p>
+ {{ form.email(size=40) }}
+ <br>
+ {{ form.subject.label }}<span class="req"> (Required)</span>
+ <p>Please enter the subject for your message</p>
+ {{ form.subject(size=40) }}
+ <br>
+ {{ form.message.label }}<span class="req"> (Required)</span>
+ <p>Please enter the message you would like to send</p>
+ {{ form.message(size=40) }}
+ <br>
+ 
+ <button type="submit">Send</button>
+</form>
+{% endblock %}
