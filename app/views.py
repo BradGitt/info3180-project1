@@ -35,7 +35,7 @@ def contact():
         request.form['email']),recipients=["bradleythompsonbct@gmail.com"])
         msg.body = request.form['message']
         mail.send(msg)
-        flash('Message sent by %s'%(request.form['name']))
+        flash('Message sent from %s'%(request.form['name']))
         return redirect('/')
     return  render_template('contact.html',form=form)
     

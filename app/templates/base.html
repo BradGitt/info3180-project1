@@ -9,15 +9,8 @@
     <meta name="author" content="">
 
     <title>{% block title %} Flask Starter App{% endblock %}</title>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul class="flashes">
-        {% for message in messages %}
-         <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
+    
+      
 
     <!-- Bootstrap -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
@@ -31,6 +24,15 @@
     </header>
     <main>
         <div class="container">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="flashes">
+            {% for message in messages %}
+             <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
             {% block main %}{% endblock %}
         </div>
     </main>

@@ -58,3 +58,17 @@ button {
     letter-spacing: 1px;
 
 }
+.flashes{
+    background-color: #cccccc;
+    border-radius: 7px;
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+
+    /* Font styles */
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+   
+    
+}
