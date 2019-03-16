@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %} Profile {% endblock %}
+
+
+{% block main %}
+<h1>Add Profile</h1>
+<div class="form">
+<form class="emailform" method="POST" action="{{url_for('profile')}}">
+ {{ form.csrf_token }}
+ 
+ {{ form.fname.label }}<span class="req"></span>
+ <br>
+ {{ form.fname(size=40) }}
+ <br>
+ {{ form.lname.label}}<span class="req"></span>
+ <br>
+ {{ form.lname (size=40)}}
+ <br>
+ {{ form.gender.label}}<span class="req"></span>
+ 
+ <br>
+  {{ form.gender (description='Select a Gender')}}
+ <br>
+ {{ form.email.label }}<span class="req"></span>
+ <br>
+ {{ form.email (placeholder="e.g. jdoe@example.com")}}
+ <br>
+ {{ form.location.label }}<span class="req"></span>
+ <br>
+ {{ form.location(placeholder="e.g. Kingston, Jamaica") }}
+<br>
+ {{ form.biography.label }}<span class="req"></span>
+ <br>
+ {{ form.biography(size=40) }}
+ <br>
+ 
+ 
+ <button type="submit">Add Profile</button>
+</form>
+</div>
+{% endblock %}

@@ -1,18 +1,23 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField,SelectField
 from wtforms.validators import DataRequired, Length
 
 class ContactForm(FlaskForm):
-    name = StringField('Name',
+    fname = StringField('First Name',
     validators=[DataRequired(), Length (max=20)])
     
-    email = StringField('E-mail',
+    lname = StringField('Last Name',
     validators=[DataRequired()])
     
-    subject = StringField('Subject',
+    gender = SelectField('Gender', choices=[('s',"Select Gender"),('m', 'Male'), ('f', 'Female')])
+    
+    email = StringField('Email',
     validators=[DataRequired()])
     
-    message = StringField('Message',
+    location= StringField('Location',
+    validators=[DataRequired()])
+    
+    biography = StringField('Biography',
     validators=[DataRequired()])
     
     # Submit = SubmitField('Send')

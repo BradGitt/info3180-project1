@@ -27,8 +27,8 @@ def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
 
-@app.route('/contact',methods=('GET','POST'))
-def contact():
+@app.route('/profile',methods=('GET','POST'))
+def profile():
     form = ContactForm()
     if form.validate_on_submit():
         msg = Message(request.form['subject'], sender=(request.form['name'],
@@ -37,7 +37,7 @@ def contact():
         mail.send(msg)
         flash('Message sent from %s'%(request.form['name']))
         return redirect('/')
-    return  render_template('contact.html',form=form)
+    return  render_template('profile.html',form=form)
     
 
 
