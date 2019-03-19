@@ -8,6 +8,9 @@ Werkzeug==0.14.1
 Flask-Mail==0.9.1
 
 Flask-WTF==0.14.2
-
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Script
+psycopg2
 
 WTForms==2.2.1

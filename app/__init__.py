@@ -1,14 +1,13 @@
 from flask import Flask
 from flask_mail import Mail
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "confirme2"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://lab5:prettydolphin@localhost/lab5"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True # added just to suppress a warning
 
-app.config['SECRET_KEY'] = 'prettydlphin'
-app.config['MAIL_SERVER'] = 'smtp.mailtrap.io'
-app.config['MAIL_PORT'] = '465' # (or try 2525)
-app.config['MAIL_USERNAME'] = 'e8e9f499da701c'
-app.config['MAIL_PASSWORD'] = 'd521e9ecc3b984'
-mail = Mail(app)
+db = SQLAlchemy(app)
 
 UPLOAD_FOLDER  = './app/static/uploads' 
 ALLOWED_EXTENSIONS = set(['jpg','png','JPG'])
