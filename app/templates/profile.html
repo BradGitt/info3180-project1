@@ -36,14 +36,14 @@
   {{form.csrf_token }}
   {{form.upload.label}}
   <br>
-  {{form.upload (class="upload")}}
-  <label for="file-upload" class="upload">
+  {{form.upload()}}
+  
+  <label for="upload" class="upload">
     Browse...
-</label>
-<input id="file-upload" type="file"/>
- <!--<button type="submit" name="submit" class="profilepic" value="profile">Browse...</button>-->
+  </label>
+  <!--<input id="file-upload" type="file"/>-->
  <br>
- <button type="submit">Add Profile</button>
+ <button type="submit" name="submit">Add Profile</button>
 </form>
 </div>
 {% endblock %}

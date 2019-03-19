@@ -10,6 +10,11 @@ body {
 /*    display: block;*/
 /*}*/
 
+.flashes{
+    list-style-type: none;
+    color: #007bff;
+}
+
 label {
     font-weight:bold;
     display:inline-block;
@@ -75,7 +80,7 @@ input {
     width: 20rem;
 }
 
-input[type="file"] {
+#upload {
     display: none;
 }
 
@@ -99,12 +104,12 @@ input[type="file"] {
     display: inline-block;
 
 }
-.browse{
-    color: #3f3f3f;
-    font-weight: bold;
-    font-size: 12px;
-    text-align: center
-}
+/*.browse{*/
+/*    color: #3f3f3f;*/
+/*    font-weight: bold;*/
+/*    font-size: 12px;*/
+/*    text-align: center*/
+/*}*/
 button {
     background-color: #56e522;
     border: none;
@@ -118,6 +123,8 @@ button {
     margin-left: 30px;
     cursor:pointer;
     letter-spacing: 1px;
+    height: 33px;
+    width: 110px;
 
 }
 .flashes{

@@ -47,6 +47,7 @@ def upload():
         upload=form.upload.data
         filename=secure_filename(upload.filename)
         upload.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        flash('File Saved', 'success')
     return render_template('profile.html', form=form)
 
     
