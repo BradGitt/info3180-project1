@@ -18,6 +18,7 @@ label {
     padding-top: 1.1rem;
     margin-left: 30px;
     color:#3f3f3f;
+    
 }
 
 select{
@@ -37,7 +38,7 @@ h1{
   padding-bottom: 1em;
 }
 .form{
-  width: 48%;
+  width: 45%;
   margin: 0 auto;
   background-color: white;
   border-radius: 5px;
@@ -74,7 +75,36 @@ input {
     width: 20rem;
 }
 
+input[type="file"] {
+    display: none;
+}
 
+.upload{
+    background-color: white;
+    border: 1.5px solid #d3d3d3;
+    box-shadow:  0 4px 8px 0 rgba(0,0,0,0.12),0 2px 4px 0 rgba(0,0,0,0.08);
+    color: #3f3f3f;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    padding: 6.5px 10px;
+    border-radius: 7px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    cursor:pointer;
+    letter-spacing: 1px;
+    height: 34px;
+    width: 111px;
+    display: inline-block;
+
+}
+.browse{
+    color: #3f3f3f;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center
+}
 button {
     background-color: #56e522;
     border: none;
@@ -83,8 +113,8 @@ button {
     font-size: 14px;
     padding: 6.5px 10px;
     border-radius: 7px;
-    margin-top: 20px;
-    margin-bottom: 25px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     margin-left: 30px;
     cursor:pointer;
     letter-spacing: 1px;
