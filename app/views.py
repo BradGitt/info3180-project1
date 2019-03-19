@@ -5,7 +5,6 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 from app import app,forms
-from app import mail
 import os
 from flask_mail import Message
 from .forms import Form
