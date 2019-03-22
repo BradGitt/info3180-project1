@@ -4,14 +4,16 @@ Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
 Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
-from app import app,forms
+from app import app,forms, db
 import os
 from flask_mail import Message
 from .forms import Form
 from werkzeug.utils import secure_filename
 from flask import render_template, request, redirect, url_for, flash
+from app.models import UserProfile
+import datetime
 
-app.config['SECRET_KEY'] = "prettydolphin"
+# app.config['SECRET_KEY'] = "prettydolphin"
 
 ###
 # Routing for your application.
@@ -41,14 +43,32 @@ def upload():
     form = Form()
 
     # Validate file upload on submit
-    if request.method == 'POST'and form.validate_on_submit():
+    if request.method == 'POST':
+        if form.validate_on_submit()==True:
+            
         # Get file data and save to your uploads folder
-        upload=form.upload.data
-        filename=secure_filename(upload.filename)
-        upload.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        flash('File Saved', 'success')
-    return render_template('profile.html', form=form)
+            upload=form.upload.data
+            filename=secure_filename(upload.filename)
+            upload.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            fname = form.fname.data
+            lname = form.lname.data
+            gender= form.gender.data
+            email = form.email.data
+            location = form.location.data
+            bio = form.biography.data
+            date = format_date_joined()
+            filename = assignPath(form.upload.data)
+            
+            user = UserProfile(fname,lname,gender,email,location,bio,date, filename)
+            db.session.add(user)
+            db.session.commit()
 
+            # remember to flash a message to the user
+            flash('User information submitted successfully.')
+        else:
+            flash('User information not submitted')
+        return redirect(url_for("upload"))  # they should be redirected to a secure-page route instead
+    return render_template("profile.html", form=form)
     
 
 
@@ -62,6 +82,15 @@ def send_text_file(file_name):
     file_dot_text = file_name + '.txt'
     return app.send_static_file(file_dot_text)
 
+def format_date_joined():
+    now = datetime.datetime.now() #current date
+    ## Format the date to return only month and year date
+    return now.strftime("%B %d, %Y")
+    
+def assignPath(upload):
+    filename = secure_filename(upload.filename)
+    upload.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    return filename 
 
 @app.after_request
 def add_header(response):

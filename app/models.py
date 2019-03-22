@@ -1,5 +1,5 @@
 from . import db
-from werkzeug.security import generate_password_hash
+
 
 class UserProfile(db.Model):
     # You can use this to change the table name. The default convention is to use
@@ -17,13 +17,15 @@ class UserProfile(db.Model):
     biography = db.Column(db.String(255))
 
     
-    def __init__(self, first_name, last_name, gender,email,location,biography):
+    def __init__(self, first_name, last_name, gender,email,location,biography,date,photo):
         self.first_name = first_name
         self.last_name = last_name
         self.gender=gender
         self.email=email
         self.location=location
         self.biography=biography
+        self.date = date
+        self.photo = photo
      
     def is_authenticated(self):
         return True
