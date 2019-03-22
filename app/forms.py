@@ -10,7 +10,7 @@ class Form(FlaskForm):
     lname = StringField('Last Name')
     # validators=[DataRequired()])
     
-    gender = SelectField('Gender', choices=[('s',"Select Gender"),('m', 'Male'), ('f', 'Female')])
+    gender = SelectField('Gender', choices=[('s',"Select Gender"),('Male', 'Male'), ('Female', 'Female')])
     
     email = StringField('Email')
     # validators=[DataRequired()])

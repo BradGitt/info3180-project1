@@ -47,9 +47,9 @@ def upload():
         if form.validate_on_submit()==True:
             
         # Get file data and save to your uploads folder
-            upload=form.upload.data
-            filename=secure_filename(upload.filename)
-            upload.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            # # upload=form.upload.data
+            # filename=secure_filename(upload.filename)
+            # upload.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             fname = form.fname.data
             lname = form.lname.data
             gender= form.gender.data
@@ -59,7 +59,7 @@ def upload():
             date = format_date_joined()
             filename = assignPath(form.upload.data)
             
-            user = UserProfile(fname,lname,gender,email,location,bio,date, filename)
+            user = UserProfile(fname,lname,gender,email,location,bio,date,filename)
             db.session.add(user)
             db.session.commit()
 
@@ -70,7 +70,15 @@ def upload():
         return redirect(url_for("upload"))  # they should be redirected to a secure-page route instead
     return render_template("profile.html", form=form)
     
-
+@app.route("/profiles")
+def profiles():
+    user_profiles = db.session.query(UserProfile).all()
+    return render_template("profiles.html", users=user_profiles)
+    
+@app.route("/profile/<userid>")
+def profileId(userid):
+    user = db.session.query(UserProfile).filter_by(id=int(userid)).first()
+    return render_template("display.html", user=user)
 
 ###
 # The functions below should be applicable to all Flask apps.
